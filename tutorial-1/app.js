@@ -5,7 +5,7 @@ new Vue({
   },
   methods: {
     showAlert: function () {
-      alert();
+      alert(`Ekranda ${this.counter} kutu var.`);
     },
     increasCounter: function () {
       this.counter++;
