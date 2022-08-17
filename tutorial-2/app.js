@@ -16,14 +16,21 @@ new Vue({
       this.counter+= 0.1;
       this.x = event.clientX;
       this.y = event.clientY;
+      if(event.ctrlKey)
+      {
+        this.addBuble(event.clientX, event.clientY); 
+      }
     },
     clickApp:function(event)
     {
-        this.counter++;
+      this.addBuble(event.clientX, event.clientY); 
+    },
+    addBuble(x,y){
+      this.counter++;
         let buble = {
             id:new Date().getTime(),
-            x:event.clientX,
-            y:event.clientY
+            x:x,
+            y:y
 
         };
         this.bubles.push(buble);
@@ -32,7 +39,6 @@ new Vue({
             let index = this.bubles.findIndex(x=> x.id == buble.id);
             this.bubles.splice(index,1);
         }, 5000);
-        console.log(this.bubles)
     }
   },
   async created(){
